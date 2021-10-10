@@ -1,0 +1,33 @@
+#include<LiquidCrystal.h>   
+LiquidCrystal lcd(8,9,10,11,12,13);
+#define ir_sensor  2
+void setup() {
+  pinMode(ir_sensor,INPUT);
+  lcd.begin(16, 2);   
+  lcd.setCursor(4, 0);
+  lcd.print("WELCOME");
+  lcd.setCursor(0, 1); 
+  lcd.print(" .............. ");  
+  lcd.clear(); 
+  lcd.setCursor(0, 0);
+  lcd.print("IR SENSOR");
+  lcd.setCursor(0, 1); 
+  lcd.print("INTERFACING SYSTEM");  
+  delay(1500); 
+  lcd.clear(); 
+}
+
+void loop() {
+  if(digitalRead(ir_sensor) == 0){
+  lcd.setCursor(0, 0);
+  lcd.print("    OBJECT    ");
+  lcd.setCursor(0, 1); 
+  lcd.print("   DETECTED   ");  
+  }
+  else{
+  lcd.setCursor(0, 0);
+  lcd.print("  NO OBJECT   ");
+  lcd.setCursor(0, 1); 
+  lcd.print("    DETECTED  ");  
+  }
+}
